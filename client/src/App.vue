@@ -25,7 +25,9 @@ onMounted(() => {
   <div class="app">
     <header class="navbar">
         <div class="left">
-            <h1>ConnectHub</h1>
+            <router-link to="/home" class="logo">
+              ConnectHub
+            </router-link>
         </div>
 
         <div class="right">
@@ -82,6 +84,18 @@ main {
 .left {
   font-weight: bold;
   color: #4f46e5;
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: bold;
+  color: #4f46e5;
+  transition: 0.2s;
+}
+
+.logo:hover {
+  color: #4338ca;
 }
 
 .right {

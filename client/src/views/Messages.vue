@@ -75,7 +75,10 @@ onMounted(loadFriends)
     <!-- RIGHT: CHAT -->
     <div class="chat" v-if="activeFriend">
       <div class="chat-header">
-        Chat with {{ activeFriend.username }}
+        <button class="back-btn" @click="$router.back()">← Back</button>
+        <div class="chat-title">
+          Chat with {{ activeFriend.username }}
+        </div>
       </div>
 
       <!-- Messages -->
@@ -110,24 +113,36 @@ onMounted(loadFriends)
 <style scoped>
 .chat-page {
   display: flex;
-  height: 100vh;
+  height: 90vh;
+  max-width: 1100px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
 }
 
-/* LEFT */
+/* LEFT PANEL */
 .friends {
-  width: 260px;
-  border-right: 1px solid #ddd;
-  padding: 10px;
+  width: 200px;
+  border-right: 1px solid #eee;
+  padding: 20px;
+  background: #fafafa;
+}
+
+.friends h3 {
+  margin-bottom: 20px;
 }
 
 .friend {
-  padding: 10px;
+  padding: 12px;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 10px;
+  transition: 0.2s;
 }
 
 .friend:hover {
-  background: #f3f4f6;
+  background: #e5e7eb;
 }
 
 .friend.active {
@@ -135,66 +150,117 @@ onMounted(loadFriends)
   color: white;
 }
 
-/* RIGHT */
+/* RIGHT CHAT AREA */
 .chat {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
+/* HEADER */
 .chat-header {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  background: #ffffff;
 }
 
-.messages-box {
-  flex: 1;
-  overflow-y: auto;
-  padding: 10px;
+.back-btn {
+  border: none;
+  background: #f3f4f6;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: 0.2s;
 }
 
-/* Messages */
-.msg {
-  max-width: 60%;
-  padding: 8px 12px;
-  border-radius: 10px;
-  margin: 5px 0;
-}
-
-.me {
-  margin-left: auto;
-  background: #6366f1;
-  color: white;
-}
-
-.them {
+.back-btn:hover {
   background: #e5e7eb;
 }
 
-/* Input */
+.chat-title {
+  font-weight: 600;
+}
+
+/* MESSAGE AREA */
+.messages-box {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background: #f9fafb;
+  display: flex;
+  flex-direction: column;
+}
+
+/* MESSAGE BUBBLES */
+.msg {
+  max-width: 65%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  margin: 6px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.me {
+  align-self: flex-end;
+  background: #6366f1;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.them {
+  align-self: flex-start;
+  background: #e5e7eb;
+  border-bottom-left-radius: 4px;
+}
+
+/* INPUT AREA */
 .input {
   display: flex;
-  padding: 10px;
-  border-top: 1px solid #ddd;
+  padding: 15px;
+  border-top: 1px solid #eee;
+  background: white;
 }
 
 .input input {
   flex: 1;
-  padding: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: 0.2s;
+}
+
+.input input:focus {
+  border-color: #6366f1;
 }
 
 .input button {
-  margin-left: 8px;
-  padding: 8px 12px;
+  margin-left: 10px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  background: #6366f1;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-/* Empty */
+.input button:hover {
+  background: #4f46e5;
+}
+
+/* EMPTY STATE */
 .empty {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #777;
+  color: #888;
+  font-size: 14px;
 }
 </style>

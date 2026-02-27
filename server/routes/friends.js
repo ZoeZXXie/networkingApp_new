@@ -43,7 +43,7 @@ router.get('/all', requireLogin, async (req, res) => {
   }
 })
 
-
+// add friends
 router.post('/:id', requireLogin, async (req, res) => {
   try {
     const myId = req.session.userId

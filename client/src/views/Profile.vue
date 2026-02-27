@@ -186,6 +186,14 @@ async function saveProfile() {
   display: block;
 }
 
+.stat.clickable {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.stat.clickable:hover {
+  color: #4f46e5;
+}
 /* modal */
 
 .modal {

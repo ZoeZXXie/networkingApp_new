@@ -16,6 +16,7 @@ async function logout() {
       <input placeholder="What's on your mind?" />
       <button>Post</button>
     </div>
+  </div>
 
 </template>
 
